@@ -46,8 +46,6 @@ construct_path() {
 # Orchestrate gathering info to present in PS1 in the format
 # [user|time][path]<[git_branch]><[k8s_info]> >
 construct_ps1() {
-  update_terminal_cwd
-  
   is_in_work_tree=$(git rev-parse --is-inside-work-tree 2> /dev/null)
   
   kubectl version > /dev/null 2>&1

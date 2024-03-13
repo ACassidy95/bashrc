@@ -5,11 +5,14 @@ k8s_context() {
   ctx=$(kubectl config current-context 2> /dev/null)
   ns=$(kubectl config view --minify -o jsonpath="{..namespace}" 2> /dev/null)
 
+  # Only display ns@ctx if ns is not default
   if [[ $ns == "default" ]]; then
-    ns="D"
+    ns=""
+  else
+    ctx="@$ctx"
   fi
 
-  echo "$ns@${ctx##*/}"
+  echo "$ns${ctx##*/}"
 }
 
 # Present path relative to Git project root with

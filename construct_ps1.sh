@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This file defines functions to construct the PS1 variable value, i.e.
+# make a nice line prompt in the terminal.
+
 # Fetch and present current K8s context and Namespace
 k8s_context() {
   ctx=$(kubectl config current-context 2> /dev/null)
